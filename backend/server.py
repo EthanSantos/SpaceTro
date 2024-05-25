@@ -6,12 +6,9 @@ import os
 
 app = Flask(__name__)
 
-VITE_SUPABASE_URL = os.getenv('VITE_SUPABASE_URL')
-VITE_SUPABASE_ANON_KEY = os.getenv('VITE_SUPABASE_ANON_KEY')
-
 # Initialize Supabase client
-supabase_url = "https://lxjocldupschbynmfkvi.supabase.co"
-supabase_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4am9jbGR1cHNjaGJ5bm1ma3ZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYxNjQ3NzgsImV4cCI6MjAzMTc0MDc3OH0.UhBHY4r_PSEC7OHbtElUgvwsiMGYv_JhibuTZpOrtHI"
+supabase_url = "https://ayyogzlsqqbwocmuuwph.supabase.co"
+supabase_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF5eW9nemxzcXFid29jbXV1d3BoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY2MjA5NTEsImV4cCI6MjAzMjE5Njk1MX0.9y9t591c8v1RNCssBa4-GNK9ZQNpR7CDqVJfvycnWCk"
 supabase = create_client(supabase_url, supabase_key)
 
 app = Flask(__name__)
