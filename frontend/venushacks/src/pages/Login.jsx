@@ -6,7 +6,9 @@ import 'tailwindcss/tailwind.css';
 
 import Home from './Home'
 
-const Login = ({ user, setUser }) => {
+const Login = () => {
+
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
         // Fetch the current session
