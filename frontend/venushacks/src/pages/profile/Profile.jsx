@@ -1,11 +1,11 @@
 import React from 'react'
 import './Profile.css'
 
-const Profile = () => {
+const Profile = ({user}) => {
     return (
         <div className='profile-screen'>
             <div className='p1'>
-                <h1>Hi user!</h1>
+                <h1>Hi {user.email}!</h1>
 
                 <div className='p2'>
                     <img src="" alt="user icon" />

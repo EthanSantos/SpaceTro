@@ -41,9 +41,7 @@ const Home = () => {
 
             <div className='title-menu'>
 
-                <Link to={'/login'} className='menu-option'>Login</Link>
-                <Link to={'/signup'} className='menu-option'>Signup</Link>
-
+                <p>This is the home page</p>
             </div>
         </div>
     )

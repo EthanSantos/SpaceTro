@@ -1,31 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Login from './pages/login/Login';
-import Signup from './pages/signup/Signup';
 import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile';
 import Learn from './pages/learn/Learn';
 import Module from './pages/learn/Module';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, useLocation, Route, Navigate } from 'react-router-dom';
 import Navbar from './navbar/Navbar';
+import ProtectedRoute from './helper/ProtectedRoute';
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const location = useLocation();
+
   return (
     <div>
-      <Router>
+      {location.pathname !== '/' && <Navbar setUser={setUser} />}
 
-        <Navbar />
-
-        <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route exact path='/login' element={<Login />} />
-          <Route exact path='/signup' element={<Signup />} />
-          <Route exact path='/learn' element={<Learn />} />
-          <Route exact path='/profile' element={<Profile />} />
-          <Route exact path='/module' element={<Module />} />
-        </Routes>
-
-      </Router>
+      <Routes>
+        <Route path="/" element={<Login user={user} setUser={setUser} />} />
+        <Route path="/home" element={<ProtectedRoute user={user}><Home /></ProtectedRoute>} />
+        <Route path="/learn" element={<ProtectedRoute user={user}><Learn /></ProtectedRoute>} />
+        <Route path="/module" element={<ProtectedRoute user={user}><Module /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute user={user}><Profile user={user} /></ProtectedRoute>} />
+      </Routes>
     </div>
   );
 };
