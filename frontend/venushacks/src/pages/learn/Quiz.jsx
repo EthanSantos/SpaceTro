@@ -9,7 +9,8 @@ const Quiz = ({planet, topic}) => {
     const apikey = import.meta.env.VITE_GEMINI_API_KEY
     const genAI = new GoogleGenerativeAI(apikey);
 
-
+    const [isCorrect, setIsCorrect] = useState(null);
+    const [answerSubmitted, setAnswerSubmitted] = useState(false)
     const [currIndex, setCurrIndex] = useState(0)
     const navigate = useNavigate()
 
@@ -42,18 +43,23 @@ const Quiz = ({planet, topic}) => {
 
     const handleSubmit = (index) => {
         const currentQuestion = AIQuestions[currIndex];
-        const isCorrect = index === currentQuestion.answer;
+        const correct = index === currentQuestion.answer;
+        setIsCorrect(correct);
+        setAnswerSubmitted(true);
+    };
 
+    const handleNextQuestion = () => {
         const nextIndex = currIndex + 1;
 
         if (nextIndex < AIQuestions.length) {
             setCurrIndex(nextIndex);
+            setIsCorrect(null); // Reset the correctness state for the next question
+            setAnswerSubmitted(false); // Reset the answer submitted state for the next question
         } else {
             console.log('module finished');
             navigate('/module');
         }
     };
-
 
     return (
         <div className="max-w-xl mx-auto p-6 bg-gray-100 shadow-md rounded-lg">
@@ -63,12 +69,30 @@ const Quiz = ({planet, topic}) => {
                 <p className="text-center text-gray-500 text-xl">Generating questions...</p>
             ) : (
                 currIndex < AIQuestions.length && (
-                    <Question
-                        handleSubmit={handleSubmit}
-                        question={AIQuestions[currIndex].question}
-                        options={AIQuestions[currIndex].options}
-                        answer={AIQuestions[currIndex].answer}
-                    />
+                    <>
+                        <Question
+                            handleSubmit={handleSubmit}
+                            question={AIQuestions[currIndex].question}
+                            options={AIQuestions[currIndex].options}
+                            answer={AIQuestions[currIndex].answer}
+                            answerSubmitted={answerSubmitted}
+                        />
+                        {isCorrect !== null && (
+                            <p className={`text-center text-xl mt-4 ${isCorrect ? 'text-green-500' : 'text-red-500'}`}>
+                                {isCorrect ? 'Correct!' : 'Wrong!'}
+                            </p>
+                        )}
+                        {answerSubmitted && (
+                            <div className="flex justify-end mt-4">
+                                <button
+                                    onClick={handleNextQuestion}
+                                    className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                                >
+                                    Next Question
+                                </button>
+                            </div>
+                        )}
+                    </>
                 )
             )}
         </div>
