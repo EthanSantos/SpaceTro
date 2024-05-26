@@ -1,13 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Wendy+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 .app {
     min-height: 100vh;
     background-color: #0C0D2C;
-    /* background-image: url('background.png'); */
     display:flex;
     flex-direction: column;
     margin: 0px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .title-screen h1{
@@ -17,12 +30,12 @@
     -webkit-text-stroke-width: 14px;
     -webkit-text-stroke-color: #3C2D46;
     paint-order: stroke fill;
-    font-size: 80px;
+    font-size: 130px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    margin-top: 20px;
 }
 
 .title-menu p{
@@ -30,9 +43,26 @@
     color: #EFEFEF;
     display: flex;
     flex-direction: row;
-    font-size: 30px;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+    margin-top: -10px;
+    margin-bottom: -30px;
 }
 
-.menu-option {
-    padding: 10px;
+.element img {
+    width: auto;
+    height: 100vh;
+    margin-top: 50px;
+    animation: rotate 20s linear infinite;
+    transform-origin: center center;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
