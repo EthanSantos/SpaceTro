@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const Quiz = ({planet, topic}) => {
+const Quiz = ({planet, topic, questions}) => {
     const apikey = import.meta.env.VITE_GEMINI_API_KEY
     const genAI = new GoogleGenerativeAI(apikey);
 

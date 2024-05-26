@@ -4,3 +4,10 @@
     align-items: center;
     justify-content: center;
 }
+
+.module-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

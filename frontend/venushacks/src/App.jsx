@@ -15,6 +15,8 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [planet, setPlanet] = useState(null);
   const [topic, setTopic] = useState('')
+  const [paragraphs, setParagraphs] = useState('')
+  const [questions, setQuestions] = useState('')
   const location = useLocation();
 
   return (
@@ -22,14 +24,71 @@ const App = () => {
       {location.pathname !== '/' && <Navbar setUser={setUser} />}
 
       <Routes>
-        <Route path="/" element={<Login user={user} setUser={setUser} />} />
-        <Route path="/home" element={<ProtectedRoute user={user}><Home /></ProtectedRoute>} />
-        <Route path="/module" element={<ProtectedRoute user={user}><Module planet={planet} setTopic={setTopic}/></ProtectedRoute>} />
-        <Route path="/quiz" element={<ProtectedRoute user={user}><Quiz planet={planet} topic={topic}/></ProtectedRoute>} />
-        <Route path="/learn" element={<ProtectedRoute user={user}><Learn planet={planet} topic={topic}/></ProtectedRoute>} />
-        <Route path="/modulelist" element={<ProtectedRoute user={user}><ModuleList setPlanet={setPlanet} /></ProtectedRoute>} />
-        <Route path="/leaderboard" element={<ProtectedRoute user={user}><Leaderboard user={user} /></ProtectedRoute>} />
-        <Route path="/profile" element={<ProtectedRoute user={user}><Profile user={user} /></ProtectedRoute>} />
+        <Route
+          path="/"
+          element={<Login user={user} setUser={setUser} />}
+        />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute user={user}>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/module"
+          element={
+            <ProtectedRoute user={user}>
+              <Module
+                planet={planet}
+                setTopic={setTopic}
+                setParagraphs={setParagraphs}
+                setQuestions={setQuestions}
+              />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quiz"
+          element={
+            <ProtectedRoute user={user}>
+              <Quiz planet={planet} topic={topic} questions={questions} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/learn"
+          element={
+            <ProtectedRoute user={user}>
+              <Learn planet={planet} topic={topic} paragraphs={paragraphs} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/modulelist"
+          element={
+            <ProtectedRoute user={user}>
+              <ModuleList setPlanet={setPlanet} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <ProtectedRoute user={user}>
+              <Leaderboard user={user} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute user={user}>
+              <Profile user={user} />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );
