@@ -1,16 +1,21 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../helper/supabaseClient'
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '../../helper/supabaseClient'
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
+import './Login.css'
 import 'tailwindcss/tailwind.css';
 
-import Home from './Home'
+import Home from '../home/Home'
 
 const Login = () => {
+
+    const navigate = useNavigate()
 
     const [user, setUser] = useState(null)
 
     useEffect(() => {
+
         // Fetch the current session
         const fetchUser = async () => {
             const { data: { session } } = await supabase.auth.getSession();
@@ -24,11 +29,16 @@ const Login = () => {
             setUser(session?.user ?? null);
         });
 
+        if (false) {
+            console.log('user logged in. go home')
+            navigate('/')
+        }
+
         // Clean up the subscription
         return () => {
             authListener?.subscription.unsubscribe();
         };
-    }, []);
+    }, [user]);
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
@@ -37,10 +47,9 @@ const Login = () => {
 
     return (
         <>
-            {user ? (
-                <Home user={user} handleLogout={handleLogout} />
-            ) : (
-                <div className="min-h-screen flex items-center justify-center">
+            <div className="min-h-screen flex items-center justify-center">
+                <div className='login-block'>
+                    <h1>Login</h1>
                     <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
                         <Auth
                             supabaseClient={supabase}
@@ -57,7 +66,8 @@ const Login = () => {
                         />
                     </div>
                 </div>
-            )}
+            </div>
+        
         </>
     );
 };
