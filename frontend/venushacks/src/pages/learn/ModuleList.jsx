@@ -1,6 +1,7 @@
 import React from 'react';
 import './Learn.css';
 import { Link } from 'react-router-dom';
+import './ModuleList.css';
 
 const Learn = () => {
     return (
