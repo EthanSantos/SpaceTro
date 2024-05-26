@@ -13,6 +13,7 @@ import Leaderboard from './pages/leaderboard/Leaderboard';
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [planet, setPlanet] = useState(null);
   const location = useLocation();
 
   return (
@@ -23,10 +24,10 @@ const App = () => {
         <Route path="/" element={<Login user={user} setUser={setUser} />} />
         <Route path="/home" element={<ProtectedRoute user={user}><Home /></ProtectedRoute>} />
         <Route path="/module" element={<ProtectedRoute user={user}><Module /></ProtectedRoute>} />
-        <Route path="/quiz" element={<ProtectedRoute user={user}><Quiz /></ProtectedRoute>} />
+        <Route path="/quiz" element={<ProtectedRoute user={user}><Quiz planet={planet}/></ProtectedRoute>} />
         <Route path="/learn" element={<ProtectedRoute user={user}><Learn /></ProtectedRoute>} />
-        <Route path="/modulelist" element={<ProtectedRoute user={user}><ModuleList /></ProtectedRoute>} />
-        <Route path="/leaderboard" element={<ProtectedRoute user={user}><Leaderboard user={user}/></ProtectedRoute>} />
+        <Route path="/modulelist" element={<ProtectedRoute user={user}><ModuleList setPlanet={setPlanet} /></ProtectedRoute>} />
+        <Route path="/leaderboard" element={<ProtectedRoute user={user}><Leaderboard user={user} /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute user={user}><Profile user={user} /></ProtectedRoute>} />
       </Routes>
     </div>
