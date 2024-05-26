@@ -4,6 +4,7 @@ import Signup from './pages/signup/Signup';
 import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile';
 import Learn from './pages/learn/Learn';
+import Module from './pages/learn/Module';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './navbar/Navbar';
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/learn' element={<Learn />} />
           <Route exact path='/profile' element={<Profile />} />
+          <Route exact path='/module' element={<Module />} />
         </Routes>
 
       </Router>

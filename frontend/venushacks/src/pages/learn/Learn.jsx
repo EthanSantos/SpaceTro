@@ -1,12 +1,36 @@
 import React from 'react'
 import './Learn.css'
+import { useNavigate } from 'react-router'
 
 const Learn = () => {
+
+    const navigate = useNavigate()
+
+    const handleModule = () => {
+        navigate('/module')
+    }
+
     return (
         <div className='learn-screen'>
-            {/* <h1 className="text-2xl font-bold mb-4">Welcome, {user.email}!</h1> */}
-            <h1>Learn</h1>
-            <p>This is the user's Learn page. Here, you can display information about the user, such as their name, Learn picture, and any other relevant details. You can also provide options for the user to edit their Learn or view their activity history. Customize this page to suit your application's needs.</p>
+            <div className='learn-block'>
+                <div className='module' onClick={handleModule}>
+                    <img src="" alt="planet" />
+                    <p>Module 1</p>
+                    <h3>Venus</h3>
+                </div>
+
+                <div className='module' onClick={handleModule}>
+                    <img src="" alt="planet" />
+                    <p>Module 2</p>
+                    <h3>Mars</h3>
+                </div>
+
+                <div className='module' onClick={handleModule}>
+                    <img src="" alt="planet" />
+                    <p>Module 3</p>
+                    <h3>Jupiter</h3>
+                </div>
+            </div>
         </div>
     )
 }

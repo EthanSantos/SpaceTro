@@ -29,7 +29,7 @@ const Login = () => {
             setUser(session?.user ?? null);
         });
 
-        if (false) {
+        if (user) {
             console.log('user logged in. go home')
             navigate('/')
         }
