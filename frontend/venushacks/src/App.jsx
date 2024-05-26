@@ -46,6 +46,7 @@ const App = () => {
                 setParagraphs={setParagraphs}
                 setQuestions={setQuestions}
                 setPlanet={setPlanet}
+                topic={topic}
               />
             </ProtectedRoute>
           }
@@ -90,11 +91,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-
-        {/* <Route path="/module" element={<Module planetImage={selectedPlanet ? selectedPlanet.imageSrc : ''} />} />
-        <Route path="/learn" element={<div>Learn Page</div>} />
-        <Route path="/quiz" element={<div>Quiz Page</div>} />
-        <Route path="/" element={<ModuleList setPlanet={setSelectedPlanet} />} /> */}
       </Routes>
     </div>
   );

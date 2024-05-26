@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
-import './Profile.css';
+import './Profile.css'
 import astronaut from '../../assets/Astronaut.png'
+import gold from '../../assets/gold.png'
+import diamond from '../../assets/diamond.png'
+import silver from '../../assets/silver.png'
+import bronze from '../../assets/bronze.png'
 
 const Profile = ({ user }) => {
     const [data, setData] = useState(null); // Use null instead of an empty array to check for no data
+    const [img, setImg] = useState(null)
 
     useEffect(() => {
         if (user) { // Ensure user is defined before calling fetchData
@@ -17,8 +22,26 @@ const Profile = ({ user }) => {
             const response = await axios.get('http://localhost:5000/api/profile', {
                 params: { user_id: user.id },
             });
+
+
+            if (response.data.progress > 50) {
+                setImg(astronaut)
+            }
+            else if (response.data.progress > 40) {
+                setImg(diamond)
+            }
+            else if (response.data.progress > 30) {
+                setImg(gold)
+            }
+            else if (response.data.progress > 20) {
+                setImg(silver)
+            }
+            else {
+                setImg(bronze)
+            }
+
             setData(response.data);
-            console.log(response.data);
+            console.log(response.data.progress);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -34,7 +57,7 @@ const Profile = ({ user }) => {
             {data ? (
                 <>
                     <div className="mt-4">
-                        <img src={astronaut} alt="user icon" className="w-40 h-auto mx-auto rounded-full border-15 border-gray-300" />
+                        <img src={img} alt="user icon" className="w-40 h-auto mx-auto rounded-full border-15 border-gray-300" />
                         <h2 className="text-xl mt-5" style={{fontFamily: 'Lato'}}>Progress: {data.progress}</h2>
                         <div className="mt-10">
                             <div>
