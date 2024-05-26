@@ -1,0 +1,23 @@
+/* Styles for the main module container */
+.module {
+    padding: 20px; /* Add some padding for better readability */
+    margin: 0 auto; /* Center the module horizontally */
+    max-width: 800px; /* Optional: Set a maximum width for responsiveness */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    background-image: url('testBG.png'); /* Assuming you still want to use the background image */
+    background-position: center;
+    background-size: cover; 
+}
+
+/* Styles for the module title (H1) */
+.module h1 {
+    text-align: center; /* Center the title text */
+    margin-bottom: 20px; /* Add some space after the title */
+    color: white;
+}
+
+/* Styles for the individual question component (imported from Question.css) */
+/* Assuming you have separate CSS for the Question component */
+.question {
+    /* Add your styles for the question component here */
+}

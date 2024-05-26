@@ -23,23 +23,33 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
+    padding: 50px 30px; /* Increased padding to make the background longer */
     position: relative;
     transition: transform 0.3s ease;
+    width: 300px; /* Fixed width */
+    height: 400px; /* Fixed height to make the container longer */
+    background-color: #BCA7CB; /* Purple background */
+    border-radius: 10px; /* Rounded corners */
+    margin-top: 100px; /* Add margin-top */
+}
+
+.module h3{
+    font-weight: bolder;
+    font-size: 35px;
 }
 
 .module img {
     transition: transform 0.3s ease;
     z-index: 1;
+    width: 100%;
+    height: 100%; /* Adjust the height to fit inside the longer container */
+    object-fit: cover; /* Ensures image covers the container */
 }
 
 .text-container {
-    position: absolute;
+    position: relative;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #BCA7CB; /* Background color for the box */
-    border-radius: 5px;
+    background-color: transparent; /* Make text container transparent */
     padding: 10px;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -48,12 +58,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%; /* Cover the entire module */
+    text-align: center;
 }
 
 .module h3, .module p {
     color: white;
     margin: 0;
-    text-align: center;
 }
 
 .module:hover .text-container {
@@ -62,4 +73,18 @@
 
 .module:hover img {
     transform: scale(0.9); /* Shrink image on hover */
+}
+
+.arrow-button {
+    background-color: #F5B7A8;
+    color: white;
+    margin-top: 70px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.arrow-button:hover{
+    background-color: #bb7d6d;
 }

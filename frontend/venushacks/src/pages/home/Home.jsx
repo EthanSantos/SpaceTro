@@ -45,7 +45,8 @@ const Home = () => {
         <div className='app title-screen'>
             <h1>SpaceTro</h1>
             <div className='title-menu'>
-                <p>click anywhere to start!</p>
+                {/* <p>click anywhere to start!</p> */}
+                <p> Welcome to SpaceTro where we learn all about space</p>
                 <div className='element'>
                     <img src="homeElm.png" className='rotating-moon' alt="Moon"/>
                 </div>
