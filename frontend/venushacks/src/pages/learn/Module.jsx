@@ -5,6 +5,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const Module = ({planet, setTopic, topic, setParagraphs, setQuestions}) => {
     const apikey = import.meta.env.VITE_GEMINI_API_KEY;
     const genAI = new GoogleGenerativeAI(apikey);
+    const [iconVisible, setIconVisible] = useState(false);
 
     const generateTopic = async (questions) => {
         console.log("running");
@@ -15,7 +16,7 @@ const Module = ({planet, setTopic, topic, setParagraphs, setQuestions}) => {
             }
         });
 
-        setTopic('minerals')
+        // setTopic('minerals')
 
         const prompt = `Write 3 paragraphs on the topic of minerals in the context of ${planet}. Base them off these quiz questions: ${questions} Use a high school reading level and ecstatic wording. Include metrics within each paragraph.`;
         console.log(prompt);
@@ -61,7 +62,11 @@ const Module = ({planet, setTopic, topic, setParagraphs, setQuestions}) => {
         setQuestions(questions);
         console.log('Gemini: ', questions);
 
-        generateTopic(questions)
+        generateTopic(questions);
+        // setIconVisible(true);
+        setTimeout(() => {
+            setIconVisible(false);
+        }, 2000);
     };
 
 
@@ -70,9 +75,9 @@ const Module = ({planet, setTopic, topic, setParagraphs, setQuestions}) => {
     };
 
   // Function to handle planet selection (replace with your actual logic)
-  const handlePlanetSelection = (planetName) => {
-    setSelectedPlanet(planetName);
-  };
+    const handlePlanetSelection = (planetName) => {
+        setSelectedPlanet(planetName);
+    };
 
   return (
     <div>
@@ -84,37 +89,28 @@ const Module = ({planet, setTopic, topic, setParagraphs, setQuestions}) => {
         <div>
             <div className='module-screen'>
                 <div className='module-block'>
-                    <Link to='/learn'>
-                        <img src="image1.jpg" alt="Learn icon" />
-                        <p>Learn</p>
-                    </Link>
-                    <div>
-                        <img src="image2.jpg" alt={planet} />
-                    </div>
-                    <Link to='/quiz'>
-                        <img src="image3.jpg" alt="Quiz icon" />
-                        <p>Quiz</p>
-                    </Link>
+                    <img src={`./${planet}.png`} alt={planet} style={{ width: '250px', height: 'auto' }} />
                 </div>
-
-                <label>AI Topic ✨</label>
-                <input type='text' onChange={handleTopicChange} style={{ width: '200px', height: '30px' }}></input>
-                <button onClick={generateQuestions} style={{ width: '100px', height: '30px' }}>Generate</button>
+                <div className='generator'>
+                    <p style={{ color: 'white', paddingTop: '15px', paddingBottom: '15px' }}>AI Topic ✨</p>
+                    <div>
+                        <input type='text' onChange={handleTopicChange} style={{ width: '200px', height: '30px', color: '#9D7582', borderRadius: '20px', padding: '10px', fontFamily: 'Lato', fontWeight: 'bold' }}></input>
+                    </div>
+                    <div>
+                        <button onClick={() => {
+                            generateQuestions();
+                            setIconVisible(true); // Toggle icon visibility
+                        }} style={{ width: '100px', height: '30px', color: 'white', paddingTop: '10px' }}>Generate</button>
+                    </div>
+                    <img src='icon.png' className={iconVisible ? 'iconTurn visible' : 'iconTurn'} /> {/* Conditionally apply visible class */}
+                </div>
             </div>
         </div>
         <Link to='/quiz'>
           <img src="test.png" alt="Quiz icon" />
           {/* <p>Quiz</p> */}
         </Link>
-      </div>
-
-      {/* Add your planet selection logic here (replace with your implementation) */}
-      <div>
-        <h2>Choose a Planet:</h2>
-        <button onClick={() => handlePlanetSelection('Earth')}>Earth</button>
-        <button onClick={() => handlePlanetSelection('Mars')}>Mars</button>
-        {/* Add buttons for other planets */}
-      </div>
+        </div>
     </div>
   );
 };

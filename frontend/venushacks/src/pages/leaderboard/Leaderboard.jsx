@@ -32,8 +32,8 @@ const Leaderboard = ({ user }) => {
     return (
         <div className="container mx-auto p-4 max-w-md">
             {data ? (
-                <div className="bg-white shadow-md rounded-lg p-6">
-                    <h1 className="text-2xl font-bold mb-4 text-center">Leaderboard</h1>
+                <div className="bg-white shadow-md rounded-lg my-20 p-6" style={{"box-shadow": "#9D7582 0px 0px 0px 10px"}}>
+                    <h1 className="text-2xl font-bold mb-4 text-center" style={{fontFamily: 'Wendy One', fontSize: '50px', color: '#9D7582'}}>Leaderboard</h1>
                     <ul className="divide-y divide-gray-200">
                         {data.map((entry, index) => (
                             <li key={index} className="py-4 flex justify-between items-center">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useLocation } from "react-router";
+import './Learn.css'
 
 const Learn = ({planet, topic, paragraphs}) => {
     const [article, setArticle] = useState([]);
@@ -50,11 +51,11 @@ const Learn = ({planet, topic, paragraphs}) => {
     // };
 
     return (
-        <div>
-            <h1>Learn: {topic}</h1>
+        <div className="learn-container" style={{"box-shadow": "#9D7582 0px 0px 0px 10px"}}>
+            <h1 className="learn-heading" style={{textAlign: "center"}}>Learn: {topic}</h1>
             {Array.isArray(paragraphs) && paragraphs.map((para, index) => (
-                <div>
-                    <p key={index}>{para}</p><br/>
+                <div key={index} className="paragraph-container">
+                    <p className="learn-paragraph"key={index}>{para}</p><br/>
                 </div>
             ))}
         </div>

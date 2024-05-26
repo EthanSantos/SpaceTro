@@ -58,7 +58,7 @@ const Quiz = ({ user, planet, topic, questions }) => {
     };
 
     return (
-        <div className="max-w-xl mx-auto p-6 bg-gray-100 shadow-md rounded-lg">
+        <div className="max-w-xl mx-auto my-20 py-6 bg-gray-100 shadow-md rounded-lg" style={{"box-shadow": "#9D7582 0px 0px 0px 10px"}}>
             <h1 className="text-3xl font-bold mb-6 text-center">Module 1: {planet} - {topic}</h1>
 
             {currIndex < questions.length && (
@@ -79,7 +79,8 @@ const Quiz = ({ user, planet, topic, questions }) => {
                             <div className="flex justify-end mt-4">
                                 <button
                                     onClick={handleNextQuestion}
-                                    className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                                    className="mx-4 px-3 py-2 bg-purple-400 text-white rounded-lg"
+                                    style={{ backgroundColor: '#0C0D2C' }}
                                 >
                                     Next Question
                                 </button>
