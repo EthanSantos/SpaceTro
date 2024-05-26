@@ -3,11 +3,10 @@ import React, { useState } from 'react'
 import Question from './Question';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { OpenAI} from 'openai'
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const Module = () => {
-    const apikey = import.meta.env.VITE_GEMINI_APIKEY
+    const apikey = import.meta.env.VITE_GEMINI_API_KEY
     const genAI = new GoogleGenerativeAI(apikey);
 
 
@@ -20,47 +19,31 @@ const Module = () => {
         generateAI('Earth');
     }, []);
 
-    async function generateAI(topic) {
-        // For text-only input, use the gemini-pro model
-        console.log("running")
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    
-        const prompt = `Generate 5 important questions corresponding to Earth. Each question has 4 answers and 1 zero-index of the correct answer. Write the response as a json format. Make sure the json is valid. Example: {"question":"What is the largest planet in our Solar System?","options":["Earth","Jupiter","Mars","Venus"],"answer": 1}`;
-        console.log(prompt)
+    const generateAI = async (topic) => {
+        console.log("running");
+        const model = genAI.getGenerativeModel({
+            model: "gemini-1.5-flash",
+            generationConfig: {
+                response_mime_type: "application/json"
+            }
+        });
+
+        const prompt = `Generate 5 important questions corresponding to ${topic}. Each question has 4 answers and 1 zero-index of the correct answer. Write the response as a json format. Make sure the json is valid. Example: {"question":"What is the largest planet in our Solar System?","options":["Earth","Jupiter","Mars","Venus"],"answer": 1}`;
+        console.log(prompt);
         const result = await model.generateContent(prompt);
         const response = await result.response;
-        const text = response.text();
+        const text = await response.text(); 
+        console.log(text);
+        const questions = JSON.parse(text);
 
-        const questions = JSON.parse(text)
-        const filterSlash = questions.replace('\n', '')
-        const filterN = filterSlash.replace('\\', '')
-
-        console.log('Questions: ', filterN)
-
-        setAIQuestions(questions)
-
-        console.log('Gemini: ', AIQuestions)
-    }
-    
-
-    const questions = [
-        {
-            question: 'What is the gravity of Mars?',
-            options: ['3.711 m/s²', '9.81 m/s²', '5.972 × 10^24 kg', '6.39 × 10^23 kg'],
-            answer: 0
-        },
-        {
-            question: 'What is the capital of France?',
-            options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
-            answer: 2
-        },
-        // Add more AIQuestions as needed
-    ];
+        setAIQuestions(questions);
+        console.log('Gemini: ', questions);
+    };
 
     const handleSubmit = (index) => {
         const currentQuestion = AIQuestions[currIndex];
         const isCorrect = index === currentQuestion.answer;
-        
+
         const nextIndex = currIndex + 1;
 
         if (nextIndex < AIQuestions.length) {
@@ -72,12 +55,11 @@ const Module = () => {
     };
 
 
-    return ( 
+    return (
         <div>
             <h1>Module 1: Mars</h1>
 
-            {/* map out AIQuestions */}
-            { currIndex < AIQuestions.length &&
+            {currIndex < AIQuestions.length &&
                 <Question
                     handleSubmit={handleSubmit}
                     question={AIQuestions[currIndex].question}
@@ -88,5 +70,5 @@ const Module = () => {
         </div>
     );
 }
- 
+
 export default Module;
