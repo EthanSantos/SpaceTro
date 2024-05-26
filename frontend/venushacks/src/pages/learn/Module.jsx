@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const Module = ({planet, setTopic, setParagraphs, setQuestions}) => {
+const Module = ({planet, setTopic, topic, setParagraphs, setQuestions}) => {
     const apikey = import.meta.env.VITE_GEMINI_API_KEY;
     const genAI = new GoogleGenerativeAI(apikey);
 
@@ -50,7 +50,7 @@ const Module = ({planet, setTopic, setParagraphs, setQuestions}) => {
             }
         });
 
-        const prompt = `In JSON format, Generate 5 elementary questions corresponding to minerals in the context of ${planet}. Each question has 4 answers and 1 zero-index of the correct answer. Write the response as a json format. Make sure the json is valid. Example: [{"question":"What is the largest planet in our Solar System?","options":["Earth","Jupiter","Mars","Venus"],"answer": 1}]`;
+        const prompt = `In JSON format, Generate 5 elementary questions corresponding to ${topic} in the context of ${planet}. Each question has 4 answers and 1 zero-index of the correct answer. Write the response as a json format. Make sure the json is valid. Example: [{"question":"What is the largest planet in our Solar System?","options":["Earth","Jupiter","Mars","Venus"],"answer": 1}]`;
         console.log(prompt);
         const result = await model.generateContent(prompt);
         const response = await result.response;
@@ -64,6 +64,10 @@ const Module = ({planet, setTopic, setParagraphs, setQuestions}) => {
         generateTopic(questions)
     };
 
+
+    const handleTopicChange = (event) => {
+        setTopic(event.target.value);
+    };
 
     return (
         <div>
@@ -82,7 +86,9 @@ const Module = ({planet, setTopic, setParagraphs, setQuestions}) => {
                     </Link>
                 </div>
 
-                <button onClick={() => generateQuestions()}>AI Topic! ✨</button>
+                <label>AI Topic ✨</label>
+                <input type='text' onChange={handleTopicChange} style={{ width: '200px', height: '30px' }}></input>
+                <button onClick={generateQuestions} style={{ width: '100px', height: '30px' }}>Generate</button>
             </div>
         </div>
     );
