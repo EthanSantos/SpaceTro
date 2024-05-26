@@ -7,21 +7,21 @@ const ModuleList = () => {
         <div className='learn-screen'>
             <div className='learn-block'>
                 <Link to="/module" className='module'>
-                    <img src="" alt="planet" />
+                    <img src="mercury.png" alt="planet" />
                     <p>Module 1</p>
+                    <h3>Mercury</h3>
+                </Link>
+
+                <Link to="/module" className='module'>
+                    <img src="venus.png" alt="planet" />
+                    <p>Module 2</p>
                     <h3>Venus</h3>
                 </Link>
 
                 <Link to="/module" className='module'>
-                    <img src="" alt="planet" />
-                    <p>Module 2</p>
-                    <h3>Mars</h3>
-                </Link>
-
-                <Link to="/module" className='module'>
-                    <img src="" alt="planet" />
+                    <img src="mars.png" alt="planet" />
                     <p>Module 3</p>
-                    <h3>Jupiter</h3>
+                    <h3>Mars</h3>
                 </Link>
             </div>
         </div>

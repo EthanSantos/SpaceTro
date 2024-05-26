@@ -34,11 +34,22 @@ const Home = () => {
         };
     }, [user]);
 
+    const handleLogout = async () => {
+        console.log("logged out")
+        await supabase.auth.signOut();
+        setUser(null);
+    };
+
     return (
+        
+
         <div className='app title-screen'>
             <h1>SpaceTro</h1>
             <div className='title-menu'>
-                <p style={{textAlign: 'center', justifyContent: 'center'}}>click anywhere to start!</p>
+                <p style={{textAlign: 'center', justifyContent: 'center', padding: 'none'}}>click anywhere to start!</p>
+                <div classname='element'>
+                    <img src="homeElm.png"/>
+                </div>
             </div>
         </div>
     )
