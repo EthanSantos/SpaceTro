@@ -17,12 +17,7 @@ const Navbar = ({setUser}) => {
                 <Link to='/home'>Home</Link>
                 <Link to='/learn' >Learn</Link>
                 <Link to='/profile' >Profile</Link>
-                <button
-                    onClick={handleLogout}
-                    className="btn btn-primary"
-                >
-                    Logout
-                </button>
+                <button onClick={handleLogout}>Logout</button>
             </div>
         </nav>
     );

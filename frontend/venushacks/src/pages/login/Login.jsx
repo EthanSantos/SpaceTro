@@ -6,8 +6,6 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 import './Login.css'
 import 'tailwindcss/tailwind.css';
 
-import Home from '../home/Home';
-
 const Login = ({ user, setUser }) => {
     const navigate = useNavigate();
 
