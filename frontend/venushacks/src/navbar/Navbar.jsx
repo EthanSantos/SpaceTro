@@ -12,15 +12,15 @@ const Navbar = ({setUser}) => {
     
     return (
         <nav className="navbar">
-            <h1>Spacetro</h1>
+            {/* <h1>Spacetro</h1> */}
             <div className="links">
-                <Link to='/home'>Home</Link>
-                <Link to='/learn' >Learn</Link>
+                <Link to='/learn'>Modules</Link>
+                <Link to='/home' >Home</Link>
                 <Link to='/profile' >Profile</Link>
                 <button onClick={handleLogout}>Logout</button>
             </div>
         </nav>
     );
 }
- 
+
 export default Navbar;

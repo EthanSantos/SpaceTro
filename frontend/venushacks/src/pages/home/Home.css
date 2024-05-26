@@ -1,4 +1,23 @@
-.title-screen {
+@import url('https://fonts.googleapis.com/css2?family=Wendy+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.app {
+    min-height: 100vh;
+    background-color: #0C0D2C;
+    /* background-image: url('background.png'); */
+    display:flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.title-screen h1{
+    font-family: 'Wendy One', sans-serif;
+    font-weight: bold;
+    color: #BCA7CB;
+    -webkit-text-stroke-width: 14px;
+    -webkit-text-stroke-color: #3C2D46;
+    paint-order: stroke fill;
+    font-size: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,10 +25,12 @@
     height: 100vh;
 }
 
-.title-menu {
+.title-menu p{
+    font-family: 'Lato', sans-serif;
+    color: #EFEFEF;
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    font-size: 30px;
 }
 
 .menu-option {

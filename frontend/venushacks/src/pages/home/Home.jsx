@@ -35,13 +35,10 @@ const Home = () => {
     }, [user]);
 
     return (
-        <div className='title-screen'>
-
-            <h1>Spacetro</h1>
-
+        <div className='app title-screen'>
+            <h1>SpaceTro</h1>
             <div className='title-menu'>
-
-                <p>This is the home page</p>
+                <p style={{textAlign: 'center', justifyContent: 'center'}}>click anywhere to start!</p>
             </div>
         </div>
     )
