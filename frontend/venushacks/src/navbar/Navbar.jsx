@@ -17,6 +17,7 @@ const Navbar = ({setUser}) => {
                 <Link to='/home'>Home</Link>
                 <Link to='/modulelist' >Modules</Link>
                 <Link to='/profile' >Profile</Link>
+                <Link to='/leaderboard' >Leaderboard</Link>
                 <button onClick={handleLogout}>Logout</button>
             </div>
         </nav>
