@@ -48,25 +48,29 @@ const Profile = ({ user }) => {
     };
 
     return (
-        <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
-            <div className="text-center mb-6">
-                <h1 className="text-2xl font-bold">Hi {user.email.split('@')[0]}!</h1>
-                {data ? (
-                    <>
-                        <div className="mt-4">
-                            <img src={img} alt="user icon" className="w-24 h-24 mx-auto rounded-full border-2 border-gray-300" />
-                            <h2 className="text-xl mt-2">Progress: {data.progress}</h2>
-                            <div className="mt-4">
-                                <div>
-                                    <input type="range" value={data.progress} readOnly className="w-full" />
-                                </div>
+        <div className="max-w-md mx-auto my-20 py-20 px-6 rounded-lg shadow-lg" style={{backgroundColor: '#E3CDF3', boxShadow:"0 0 0 10px white"}}>
+        <div className="text-center">
+            <h1 className="text-2xl font-bold">
+                <span style={{color: '#A48790', fontSize: '50px', fontFamily: 'Wendy One'}}>Hi, </span>
+                <span style={{color: '#270505', fontSize: '50px', fontFamily: 'Wendy One'}}>{user.email.split('@')[0]}!</span>
+            </h1>
+            {data ? (
+                <>
+                    <div className="mt-4">
+                        <img src={img} alt="user icon" className="w-40 h-auto mx-auto rounded-full border-15 border-gray-300" />
+                        <h2 className="text-xl mt-5" style={{fontFamily: 'Lato'}}>Progress: {data.progress}</h2>
+                        <div className="mt-10">
+                            <div>
+                                <h2 className="text-lg font-semibold mb-2" style={{fontFamily: 'Lato'}}>Progress</h2>
+                                <input type="range" value={data.progress} readOnly className="w-full"/>
                             </div>
                         </div>
-                    </>
-                ) : (
-                    <p className="text-gray-500">Loading...</p>
-                )}
-            </div>
+                    </div>
+                </>
+            ) : (
+                <p className="text-gray-500">Loading...</p>
+            )}
+        </div>
         </div>
     )
 }

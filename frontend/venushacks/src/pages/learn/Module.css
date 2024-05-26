@@ -5,6 +5,64 @@
     justify-content: center;
 }
 
+/* Style for the icons inside the module-block */
+.module-block img {
+    margin-top: 200px;
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.module-block img:hover {
+    transform: scale(1.1);
+}
+
+/* Container for planet image */
+    .module-block > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+}
+
+/* Style for the dynamically loaded planet image */
+.module-block > div img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Container for planet selection buttons */
+.planet-selection {
+    text-align: center;
+}
+
+.planet-selection h2 {
+    margin-bottom: 10px;
+}
+
+.planet-selection button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #bca7cb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.planet-selection button:hover {
+    background-color: #a491b3;
+}
+
+.planet-selection button:focus {
+    outline: none;
+}
 .module-screen {
     display: flex;
     flex-direction: column;

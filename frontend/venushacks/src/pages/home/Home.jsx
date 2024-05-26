@@ -7,7 +7,6 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 const Home = () => {
     const navigate = useNavigate()
 
@@ -34,14 +33,23 @@ const Home = () => {
         };
     }, [user]);
 
+    const handleLogout = async () => {
+        console.log("logged out")
+        await supabase.auth.signOut();
+        setUser(null);
+    };
+
     return (
-        <div className='title-screen'>
+        
 
-            <h1>Spacetro</h1>
-
+        <div className='app title-screen'>
+            <h1>SpaceTro</h1>
             <div className='title-menu'>
-
-                <p>This is the home page</p>
+                {/* <p>click anywhere to start!</p> */}
+                <p> Welcome to SpaceTro where we learn all about space</p>
+                <div className='element'>
+                    <img src="homeElm.png" className='rotating-moon' alt="Moon"/>
+                </div>
             </div>
         </div>
     )

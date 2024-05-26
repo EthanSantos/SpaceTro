@@ -43,9 +43,10 @@ const App = () => {
               <Module
                 planet={planet}
                 setTopic={setTopic}
-                topic={topic}
                 setParagraphs={setParagraphs}
                 setQuestions={setQuestions}
+                setPlanet={setPlanet}
+                topic={topic}
               />
             </ProtectedRoute>
           }

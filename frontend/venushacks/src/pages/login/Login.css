@@ -1,15 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Wendy+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.app {
+    min-height: 100vh;
+    background-color: #bca7cb;
+    /* background-image: url('/frontend/venushacks/background.png'); */
+    display:flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.shadow-2xl {
+    --tw-shadow: 0 25px 50px -12px rgb(0 0 0);
+    --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .login-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    /* background-color: #BCA7CB; */
+
+    background-image: url('background.png');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center;
+    margin: 0px;
 }
 
 .login-menu {
     display: flex;
     flex-direction: row;
     padding: 10px;
+    margin: 0px;
 }
 
 .login-option {
@@ -21,4 +47,30 @@
     justify-content: center;
     display: flex;
     flex-direction: row;
+}
+
+.login-title {
+    font-family: 'Wendy One', sans-serif;
+    font-size: 80px;
+    color: #BCA7CB;
+    -webkit-text-stroke-width: 14px;
+    -webkit-text-stroke-color: #0C0D2C;
+    paint-order: stroke fill;
+}
+
+.input-field {
+    font-family: 'Lato', sans-serif;
+    color: #9D7582;
+}
+
+.btn-primary-custom {
+    color: text-white;
+}
+
+.bg-custom-color {
+    background-color: #BCA7CB;
+}
+
+.text-gray-700 {
+    color:#BCA7CB;
 }

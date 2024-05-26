@@ -1,22 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Wendy+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  align-items:center;
+  padding-top: 40px;
+  margin-bottom: -20px;
+  background-color: #0C0D2C;
+}
+
 .navbar {
-    padding: 0px 30px;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    border-bottom: 1px solid #000;
-  }
-  .navbar h1 {
-    color: #000;
-  }
-  .navbar .links {
-    margin-left: auto;
-  }
-  .navbar a {
-    margin-left: 16px;
-    text-decoration: none;
-    padding: 6px;
-    color: #000;
-  }
-  .navbar a:hover {
-    color: #6578A9;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+  background-color: #D6BCFA;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.navbar .nav-link {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  padding: 6px;
+}
+
+.navbar .nav-link:hover {
+  color: #6578A9;
+}
+
+/* Button styles */
+.navbar .nav-button {
+  background-color: #E53E3E;
+  color: white;
+  font-weight: bold;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.navbar .nav-button:hover {
+  background-color: #C53030;
+}
