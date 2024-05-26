@@ -15,7 +15,7 @@ const Navbar = ({setUser}) => {
             <h1>Spacetro</h1>
             <div className="links">
                 <Link to='/home'>Home</Link>
-                <Link to='/learn' >Learn</Link>
+                <Link to='/modulelist' >Modules</Link>
                 <Link to='/profile' >Profile</Link>
                 <Link to='/leaderboard' >Leaderboard</Link>
                 <button onClick={handleLogout}>Logout</button>
