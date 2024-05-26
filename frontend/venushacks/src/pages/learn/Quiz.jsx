@@ -25,7 +25,7 @@ const Module = () => {
         console.log("running")
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     
-        const prompt = `Generate 5 important questions corresponding to Earth. Each question has 4 answers and 1 zero-index of the correct answer. Write the response as a json format. Make sure the json is valid. Example: {"question":"What is the largest planet in our Solar System?","options":["Earth","Jupiter","Mars","Venus"],"answer": 1}`;
+        const prompt = ``;
         console.log(prompt)
         const result = await model.generateContent(prompt);
         const response = await result.response;
@@ -43,19 +43,19 @@ const Module = () => {
     }
     
 
-    const questions = [
-        {
-            question: 'What is the gravity of Mars?',
-            options: ['3.711 m/s²', '9.81 m/s²', '5.972 × 10^24 kg', '6.39 × 10^23 kg'],
-            answer: 0
-        },
-        {
-            question: 'What is the capital of France?',
-            options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
-            answer: 2
-        },
-        // Add more AIQuestions as needed
-    ];
+    // const questions = [
+    //     {
+    //         question: 'What is the gravity of Mars?',
+    //         options: ['3.711 m/s²', '9.81 m/s²', '5.972 × 10^24 kg', '6.39 × 10^23 kg'],
+    //         answer: 0
+    //     },
+    //     {
+    //         question: 'What is the capital of France?',
+    //         options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
+    //         answer: 2
+    //     },
+    //     // Add more AIQuestions as needed
+    // ];
 
     const handleSubmit = (index) => {
         const currentQuestion = AIQuestions[currIndex];
