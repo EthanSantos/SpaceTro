@@ -28,7 +28,7 @@ const Quiz = ({planet}) => {
             }
         });
 
-        const prompt = `In JSON format, Generate 5 important questions corresponding to ${planet}. Each question has 4 answers and 1 zero-index of the correct answer. Write the response as a json format. Make sure the json is valid. Example: [{"question":"What is the largest planet in our Solar System?","options":["Earth","Jupiter","Mars","Venus"],"answer": 1}]`;
+        const prompt = `In JSON format, Generate 5 important questions corresponding to ${'ISS'}. Each question has 4 answers and 1 zero-index of the correct answer. Write the response as a json format. Make sure the json is valid. Example: [{"question":"What is the largest planet in our Solar System?","options":["Earth","Jupiter","Mars","Venus"],"answer": 1}]`;
         console.log(prompt);
         const result = await model.generateContent(prompt);
         const response = await result.response;
