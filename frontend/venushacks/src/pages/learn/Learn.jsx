@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { useLocation } from "react-router";
 
-const Learn = ({topic}) => {
+const Learn = ({planet, topic}) => {
     const [article, setArticle] = useState([]);
     const apikey = import.meta.env.VITE_GEMINI_API_KEY;
     const genAI = new GoogleGenerativeAI(apikey);
 
     useEffect(() => {
-        generateAI();
-    }, []);
+        console.log(planet, topic)
+
+        if (planet && topic) {
+            generateAI();
+        }
+        
+    }, [planet, topic]);
 
     const generateAI = async () => {
         console.log("running");
@@ -19,7 +25,7 @@ const Learn = ({topic}) => {
             }
         });
 
-        const prompt = `Write 3 paragraphs on the topic of ISS. Use a high school reading level and ecstatic wording. Include metrics within each paragraph.`;
+        const prompt = `Write 3 paragraphs on the topic of ${topic} in the context of ${planet}. Use a high school reading level and ecstatic wording. Include metrics within each paragraph.`;
         console.log(prompt);
         const result = await model.generateContent(prompt);
         const response = await result.response;

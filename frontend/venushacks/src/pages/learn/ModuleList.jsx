@@ -13,7 +13,7 @@ const planets = [
     { name: 'Neptune', module: 'Module 8', imageSrc: mars }
 ];
 
-const ModuleList = ({ setPlanet }) => {
+const ModuleList = ({ setPlanet, setTopic }) => {
     const [index, setIndex] = useState(0)
     const [filterPlanets, setFilterPlanets] = useState(planets.slice(0, 3));
     const navigate = useNavigate();
