@@ -4,8 +4,9 @@ import Question from './Question';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import axios from 'axios';
 
-const Quiz = ({planet, topic}) => {
+const Quiz = ({ user, planet, topic }) => {
     const apikey = import.meta.env.VITE_GEMINI_API_KEY
     const genAI = new GoogleGenerativeAI(apikey);
 
@@ -41,11 +42,27 @@ const Quiz = ({planet, topic}) => {
         console.log('Gemini: ', questions);
     };
 
-    const handleSubmit = (index) => {
+    const incrementProgress = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/api/points', null, {
+                params: { user_id: user.id },
+            });
+            
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error incrementing progress:', error.response?.data || error.message);
+        }
+    };
+
+    const handleSubmit = async (index) => {
         const currentQuestion = AIQuestions[currIndex];
         const correct = index === currentQuestion.answer;
         setIsCorrect(correct);
         setAnswerSubmitted(true);
+
+        if (correct) {
+            await incrementProgress(); // Call incrementProgress if the answer is correct
+        }
     };
 
     const handleNextQuestion = () => {

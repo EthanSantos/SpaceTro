@@ -47,13 +47,14 @@ def get_leaderboard():
         return jsonify({"error": str(error)}), 500
     
 @app.route('/api/points', methods=['POST'])
-def add_points():
-    try:
-        response = supabase.rpc('add_points').execute()
-        
-    except Exception as error:
-        print(f"Error fetching leaderboard: {error}")
-        return jsonify({"error": str(error)}), 500
+def increment_progress():
+    user_id = request.args.get('user_id')
+    if user_id is None:
+        return {'error': 'user_id is required'}, 400
+    
+    response = supabase.rpc('increment_progress_for_user', {"user_id": user_id}).execute()
+    
+    return {'message': 'Progress incremented successfully'}
 
 if __name__ == '__main__':
     app.run(debug=True)
