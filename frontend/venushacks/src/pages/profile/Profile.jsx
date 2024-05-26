@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import './Profile.css'
+import astronaut from '../../assets/Astronaut.png'
 
 const Profile = ({ user }) => {
     const [data, setData] = useState(null); // Use null instead of an empty array to check for no data
@@ -30,7 +31,7 @@ const Profile = ({ user }) => {
                 {data ? (
                     <>
                         <div className="mt-4">
-                            <img src="" alt="user icon" className="w-24 h-24 mx-auto rounded-full border-2 border-gray-300" />
+                            <img src={astronaut} alt="user icon" className="w-24 h-24 mx-auto rounded-full border-2 border-gray-300" />
                             <h2 className="text-xl mt-2">Progress: {data.progress}</h2>
                             <div className="mt-4">
                                 <div className="flex justify-between items-center mb-4">
