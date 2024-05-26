@@ -7,7 +7,6 @@ import Learn from './pages/learn/Learn';
 import ModuleList from './pages/learn/ModuleList';
 import Module from './pages/learn/Module';
 import Quiz from './pages/learn/Quiz';
-import { BrowserRouter as Router, Routes, useLocation, Route, Navigate } from 'react-router-dom';
 import Navbar from './navbar/Navbar';
 import ProtectedRoute from './helper/ProtectedRoute';
 import Leaderboard from './pages/leaderboard/Leaderboard';

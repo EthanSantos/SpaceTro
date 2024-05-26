@@ -1,12 +1,47 @@
 import './Module.css'
 import React, { useState } from 'react'
 import Question from './Question';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import { OpenAI} from 'openai'
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const Module = () => {
+    const apikey = import.meta.env.VITE_GEMINI_APIKEY
+    const genAI = new GoogleGenerativeAI(apikey);
+
 
     const [currIndex, setCurrIndex] = useState(0)
     const navigate = useNavigate()
+
+    const [AIQuestions, setAIQuestions] = useState([])
+
+    useEffect(() => {
+        generateAI('Earth');
+    }, []);
+
+    async function generateAI(topic) {
+        // For text-only input, use the gemini-pro model
+        console.log("running")
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    
+        const prompt = `Generate 5 important questions corresponding to Earth. Each question has 4 answers and 1 zero-index of the correct answer. Write the response as a json format. Make sure the json is valid. Example: {"question":"What is the largest planet in our Solar System?","options":["Earth","Jupiter","Mars","Venus"],"answer": 1}`;
+        console.log(prompt)
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = response.text();
+
+        const questions = JSON.parse(text)
+        const filterSlash = questions.replace('\n', '')
+        const filterN = filterSlash.replace('\\', '')
+
+        console.log('Questions: ', filterN)
+
+        setAIQuestions(questions)
+
+        console.log('Gemini: ', AIQuestions)
+    }
+    
 
     const questions = [
         {
@@ -19,20 +54,20 @@ const Module = () => {
             options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
             answer: 2
         },
-        // Add more questions as needed
+        // Add more AIQuestions as needed
     ];
 
     const handleSubmit = (index) => {
-        const currentQuestion = questions[currIndex];
+        const currentQuestion = AIQuestions[currIndex];
         const isCorrect = index === currentQuestion.answer;
         
         const nextIndex = currIndex + 1;
 
-        if (nextIndex < questions.length) {
+        if (nextIndex < AIQuestions.length) {
             setCurrIndex(nextIndex);
         } else {
             console.log('module finished');
-            navigate('/learn');
+            navigate('/module');
         }
     };
 
@@ -41,13 +76,13 @@ const Module = () => {
         <div>
             <h1>Module 1: Mars</h1>
 
-            {/* map out questions */}
-            { currIndex < questions.length &&
+            {/* map out AIQuestions */}
+            { currIndex < AIQuestions.length &&
                 <Question
                     handleSubmit={handleSubmit}
-                    question={questions[currIndex].question}
-                    options={questions[currIndex].options}
-                    answer={questions[currIndex].answer}
+                    question={AIQuestions[currIndex].question}
+                    options={AIQuestions[currIndex].options}
+                    answer={AIQuestions[currIndex].answer}
                 />
             }
         </div>
