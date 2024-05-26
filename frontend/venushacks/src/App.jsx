@@ -53,7 +53,7 @@ const App = () => {
           path="/quiz"
           element={
             <ProtectedRoute user={user}>
-              <Quiz planet={planet} topic={topic} questions={questions} />
+              <Quiz user={user} planet={planet} topic={topic} questions={questions} />
             </ProtectedRoute>
           }
         />
