@@ -11,15 +11,15 @@ const Navbar = ({ setUser }) => {
     };
 
     return (
-        <nav className="bg-purple-300 py-0.5 px-2 rounded-full shadow-lg w-1/2 mx-auto">
-            <div className="flex justify-around items-center h-full">
+        <nav className="navbar-container">
+            <div className="navbar">
                 <Link to='/home' className="text-sm font-semibold text-gray-800 hover:text-black">Home</Link>
                 <Link to='/modulelist' className="text-sm font-semibold text-gray-800 hover:text-black">Modules</Link>
                 <Link to='/profile' className="text-sm font-semibold text-gray-800 hover:text-black">Profile</Link>
                 <Link to='/leaderboard' className="text-sm font-semibold text-gray-800 hover:text-black">Leaderboard</Link>
                 <button
                     onClick={handleLogout}
-                    className="bg-red-600 hover:bg-red-700 text-white font-bold py-0.5 px-2 rounded"
+                    className="nav-button"
                 >
                     Logout
                 </button>

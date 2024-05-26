@@ -36,8 +36,7 @@ const Login = ({ user, setUser }) => {
     }, [navigate, setUser]);
 
     return (
-        <div className="login-screen flex flex-col items-center justify-center h-screen">
-            {/* <img src="icon.png" alt="Mascot" className="absolute left-80 bottom-12 z-0 mr-6 mb-6" style={{ maxHeight: '200px', maxWidth: '200px', position: 'fixed' }} /> */}
+        <div className="login-screen flex flex-col items-center justify-center h-screen"> 
             <h1 className="login-title">Sign in</h1>
             <div className="max-w-md w-full p-8 rounded-lg shadow-2xl" style={{ backgroundColor: '#0C0D2C' }}>
                 <Auth

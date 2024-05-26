@@ -46,9 +46,9 @@ const Home = () => {
         <div className='app title-screen'>
             <h1>SpaceTro</h1>
             <div className='title-menu'>
-                <p style={{textAlign: 'center', justifyContent: 'center', padding: 'none'}}>click anywhere to start!</p>
-                <div classname='element'>
-                    <img src="homeElm.png"/>
+                <p>click anywhere to start!</p>
+                <div className='element'>
+                    <img src="homeElm.png" className='rotating-moon' alt="Moon"/>
                 </div>
             </div>
         </div>
