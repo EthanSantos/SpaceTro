@@ -1,9 +1,10 @@
-.learn-screen {
+/* .learn-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-image: url('./moduleBG.png');
 }
 
 .learn-option {
@@ -22,14 +23,18 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10px;
 }
 
 .module h3 {
     opacity: 0;
+    color: white;
 }
 
 .module p {
     opacity: 0;
+    color: white;
 }
 
 .module:hover h3 {
@@ -38,4 +43,68 @@
 
 .module:hover p {
     opacity: 1;
+} */
+
+.learn-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('./moduleBG.png');
 }
+
+.learn-option {
+    padding: 10px;
+}
+
+.learn-block {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.module {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.module img {
+    transition: transform 0.3s ease;
+}
+
+.module h3, .module p {
+    opacity: 0;
+    color: white;
+    margin: 0;
+    padding: 10px 10px;
+    background-color: #BCA7CB; /* Background color for the box */
+    border-radius: 5px;
+    position: absolute;
+    transition: opacity 0.3s ease;
+}
+
+.module p {
+    bottom: 40px;
+}
+
+.module h3 {
+    bottom: -10px;
+    font-size: larger;
+}
+
+.module:hover h3, .module:hover p {
+    opacity: 10;
+}
+
+.module:hover img {
+    transform: scale(0.9); /* Shrink image on hover */
+}
+
+

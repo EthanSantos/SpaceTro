@@ -1,31 +1,37 @@
 import React from 'react';
-import './ModuleList.css';
-import { Link } from 'react-router-dom'; // Import Link instead of useNavigation
+import './Learn.css';
+import { Link } from 'react-router-dom';
 
-const ModuleList = () => {
+const Learn = () => {
     return (
-        <div className='learn-screen'>
-            <div className='learn-block'>
-                <Link to="/module" className='module'>
+        <div className="learn-screen">
+            <div className="learn-block">
+                <Link to="/module" className="module">
                     <img src="mercury.png" alt="planet" />
-                    <p>Module 1</p>
-                    <h3>Mercury</h3>
+                    <div className="text-container">
+                        <p>Module 1</p>
+                        <h3>Mercury</h3>
+                    </div>
                 </Link>
 
-                <Link to="/module" className='module'>
+                <Link to="/module" className="module">
                     <img src="venus.png" alt="planet" />
-                    <p>Module 2</p>
-                    <h3>Venus</h3>
+                    <div className="text-container">
+                        <p>Module 2</p>
+                        <h3>Venus</h3>
+                    </div>
                 </Link>
 
-                <Link to="/module" className='module'>
+                <Link to="/module" className="module">
                     <img src="mars.png" alt="planet" />
-                    <p>Module 3</p>
-                    <h3>Mars</h3>
+                    <div className="text-container">
+                        <p>Module 3</p>
+                        <h3>Mars</h3>
+                    </div>
                 </Link>
             </div>
         </div>
     );
 };
 
-export default ModuleList;
+export default Learn;
