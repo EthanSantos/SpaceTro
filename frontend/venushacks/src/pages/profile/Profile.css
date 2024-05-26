@@ -52,3 +52,8 @@
     align-items: center;
     justify-content: center;
 }
+
+
+input[type="range"] {
+    pointer-events: none;
+}
