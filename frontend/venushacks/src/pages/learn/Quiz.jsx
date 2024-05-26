@@ -32,28 +32,13 @@ const Module = () => {
         console.log(prompt);
         const result = await model.generateContent(prompt);
         const response = await result.response;
-        const text = await response.text(); 
+        const text = await response.text();
         console.log(text);
         const questions = JSON.parse(text);
 
         setAIQuestions(questions);
         console.log('Gemini: ', questions);
     };
-
-
-    const questions = [
-        {
-            question: 'What is the gravity of Mars?',
-            options: ['3.711 m/s²', '9.81 m/s²', '5.972 × 10^24 kg', '6.39 × 10^23 kg'],
-            answer: 0
-        },
-        {
-            question: 'What is the capital of France?',
-            options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
-            answer: 2
-        },
-        // Add more AIQuestions as needed
-    ];
 
     const handleSubmit = (index) => {
         const currentQuestion = AIQuestions[currIndex];
@@ -71,18 +56,21 @@ const Module = () => {
 
 
     return (
-        <div>
-            <h1>Module 1: Mars</h1>
+        <div className="max-w-xl mx-auto p-6 bg-gray-100 shadow-md rounded-lg">
+            <h1 className="text-3xl font-bold mb-6 text-center">Module 1: Mars</h1>
 
-            {/* map out AIQuestions */}
-            {currIndex < AIQuestions.length &&
-                <Question
-                    handleSubmit={handleSubmit}
-                    question={AIQuestions[currIndex].question}
-                    options={AIQuestions[currIndex].options}
-                    answer={AIQuestions[currIndex].answer}
-                />
-            }
+            {AIQuestions.length === 0 ? (
+                <p className="text-center text-gray-500 text-xl">Generating questions...</p>
+            ) : (
+                currIndex < AIQuestions.length && (
+                    <Question
+                        handleSubmit={handleSubmit}
+                        question={AIQuestions[currIndex].question}
+                        options={AIQuestions[currIndex].options}
+                        answer={AIQuestions[currIndex].answer}
+                    />
+                )
+            )}
         </div>
     );
 }
