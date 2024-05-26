@@ -1,0 +1,41 @@
+.learn-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.learn-option {
+    padding: 10px;
+}
+
+.learn-block {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.module {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.module h3 {
+    opacity: 0;
+}
+
+.module p {
+    opacity: 0;
+}
+
+.module:hover h3 {
+    opacity: 1;
+}
+
+.module:hover p {
+    opacity: 1;
+}
