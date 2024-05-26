@@ -1,7 +1,25 @@
 const Learn = () => {
     return (
-        <div>
-            <h1>Learn</h1>
+        <div className='learn-screen'>
+            <div className='learn-block'>
+                <div className='module' onClick={handleModule}>
+                    <img src="" alt="planet" />
+                    <p>Module 1</p>
+                    <h3>Venus</h3>
+                </div>
+
+                <div className='module' onClick={handleModule}>
+                    <img src="" alt="planet" />
+                    <p>Module 2</p>
+                    <h3>Mars</h3>
+                </div>
+
+                <div className='module' onClick={handleModule}>
+                    <img src="" alt="planet" />
+                    <p>Module 3</p>
+                    <h3>Jupiter</h3>
+                </div>
+            </div>
         </div>
     );
 }
