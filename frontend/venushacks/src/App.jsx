@@ -22,12 +22,16 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login user={user} setUser={setUser} />} />
         <Route path="/home" element={<ProtectedRoute user={user}><Home /></ProtectedRoute>} />
-        <Route path="/module" element={<ProtectedRoute user={user}><Module /></ProtectedRoute>} />
-        <Route path="/quiz" element={<ProtectedRoute user={user}><Quiz /></ProtectedRoute>} />
-        <Route path="/learn" element={<ProtectedRoute user={user}><Learn /></ProtectedRoute>} />
+        {/* <Route path="/module" element={<ProtectedRoute user={user}><Module /></ProtectedRoute>} /> */}
+        {/* <Route path="/quiz" element={<ProtectedRoute user={user}><Quiz /></ProtectedRoute>} /> */}
+        {/* <Route path="/learn" element={<ProtectedRoute user={user}><Learn /></ProtectedRoute>} /> */}
         <Route path="/modulelist" element={<ProtectedRoute user={user}><ModuleList /></ProtectedRoute>} />
         <Route path="/leaderboard" element={<ProtectedRoute user={user}><Leaderboard user={user}/></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute user={user}><Profile user={user} /></ProtectedRoute>} />
+
+        <Route path="/learn" element={<Learn />} />
+        <Route path="/module/:planet" element={<Module />} />
+        <Route path="/quiz" element={<Quiz />} />
       </Routes>
     </div>
   );

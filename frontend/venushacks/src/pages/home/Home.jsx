@@ -47,7 +47,7 @@ const Home = () => {
             <h1>SpaceTro</h1>
             <div className='title-menu'>
                 <p style={{textAlign: 'center', justifyContent: 'center', padding: 'none'}}>click anywhere to start!</p>
-                <div classname='element'>
+                <div className='element'>
                     <img src="homeElm.png"/>
                 </div>
             </div>
