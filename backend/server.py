@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 
 @app.route('/api/profile', methods=['GET'])
-def get_data():
+def get_profile_data():
     try:
         user_id = request.args.get('user_id')
         if not user_id:
@@ -29,6 +29,21 @@ def get_data():
 
     except Exception as error:
         print(f"Error fetching user profile: {error}")
+        return jsonify({"error": str(error)}), 500
+    
+@app.route('/api/leaderboard', methods=['GET'])
+def get_leaderboard():
+    try:
+        response = supabase.rpc('get_leaderboard').execute() # custom sql function
+        data = response.data
+
+        if not data:
+            return jsonify({"error": "No data found"}), 404
+
+        return jsonify(data), 200
+
+    except Exception as error:
+        print(f"Error fetching leaderboard: {error}")
         return jsonify({"error": str(error)}), 500
 
 if __name__ == '__main__':
