@@ -16,12 +16,12 @@ const Profile = () => {
                                 <h2>Rank</h2>
                             </div>
 
-                            <div className='p6'>
+                            <div className='p5'>
                                 <h2>Ongoing Module</h2>
                             </div>
                         </div>
 
-                        <div className='p7'>
+                        <div className='p6'>
                             <h2>Progress</h2>
                             <input type="range" />
                         </div>
