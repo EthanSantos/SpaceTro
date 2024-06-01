@@ -25,3 +25,6 @@ Educates young women on the fundamentals of our galaxy.
 ## What's next for SpaceTro
 - Display ranks and module completions on LinkedIn
 - Incorporate a wider range of media for learning (e.g., videos, games, simulations)
+
+## Demo
+Check out our demo [here](https://www.youtube.com/watch?v=x8YbTeF2S8Q).
